@@ -1,0 +1,19 @@
+#Desativar a opção de exibir multiplas 
+paginas por extensão
+
+Options -Multiviews
+
+#Ativar o motor de reescrita das URL´s do Apache
+RewriteEngine Options
+
+#Condição : se o arquivo fisico nao existir
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#Condição : se o diretorio fisico não existir
+RewriteCond %{REQUEST_FILENAME} !d
+
+#Regra de reescrita : tudo que for diferente de arquivo ou diretorio sera redirecionado para index.php
+
+
+# O parametro capturado da URL será passado como ?URL ao script index.php
+RewriteRule ^(.+)$ index.php?url=1 [QSA,L]
